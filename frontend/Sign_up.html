@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenImpact | About Us</title>
+    <title>GreenImpact | Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -27,31 +27,28 @@
     <style>
         .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
         .dark .glass { background: rgba(15, 23, 42, 0.7); }
-        .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
-        .gradient-text { background: linear-gradient(135deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .team-card {
-            transition: all 0.4s ease;
+        .signup-card {
+            background: #f0faf4;
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            max-width: 28rem;
+            width: 100%;
         }
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
+        .dark .signup-card {
+            background: #0f172a;
         }
 
-        /* Fixed 2 inch x 2 inch image (96px x 96px at 96 DPI) */
-        .profile-img {
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
+        @media (max-width: 480px) {
+            .signup-card {
+                padding: 2rem;
+                border-radius: 1.5rem;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
     <!-- Navigation Header -->
     <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
@@ -82,105 +79,78 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-16 text-center bg-gradient-to-b from-emerald-50/50 to-transparent dark:from-slate-900">
-        <div class="max-w-6xl mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-outfit font-extrabold mb-4 leading-tight">
-                About <span class="gradient-text">GreenImpact</span>
+    <!-- Main Sign Up Content with padding -->
+    <main class="flex-1 flex items-center justify-center pt-20 px-4 pb-20">
+        <div class="signup-card text-center">
+            <h1 class="text-4xl md:text-5xl font-outfit font-bold mb-4">
+                Join <span class="text-emerald-600 dark:text-emerald-400">GreenImpact</span>
             </h1>
-            <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed opacity-90">
-                We're on a mission to make sustainability accessible, actionable, and rewarding for everyone.
+            <p class="text-slate-600 dark:text-slate-400 mb-10 text-lg">
+                Start your journey towards a more sustainable lifestyle today
+            </p>
+
+            <form class="space-y-6">
+                <div class="text-left">
+                    <label class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Full Name</label>
+                    <div class="relative">
+                        <span class="absolute left-5 top-1/2 -translate-y-1/2 text-2xl text-slate-500">👤</span>
+                        <input type="text" placeholder="Your full name" required
+                               class="w-full pl-14 pr-5 py-4 bg-emerald-50 dark:bg-slate-800 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-300 dark:focus:ring-emerald-700">
+                    </div>
+                </div>
+
+                <div class="text-left">
+                    <label class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute left-5 top-1/2 -translate-y-1/2 text-2xl text-slate-500">✉</span>
+                        <input type="email" placeholder="you@example.com" required
+                               class="w-full pl-14 pr-5 py-4 bg-emerald-50 dark:bg-slate-800 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-300 dark:focus:ring-emerald-700">
+                    </div>
+                </div>
+
+                <div class="text-left">
+                    <label class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Password</label>
+                    <div class="relative">
+                        <span class="absolute left-5 top-1/2 -translate-y-1/2 text-2xl text-slate-500">🔒</span>
+                        <input type="password" placeholder="••••••••" required
+                               class="w-full pl-14 pr-14 py-4 bg-emerald-50 dark:bg-slate-800 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-300 dark:focus:ring-emerald-700">
+                        <span class="absolute right-5 top-1/2 -translate-y-1/2 text-2xl text-slate-500 cursor-pointer">👁</span>
+                    </div>
+                </div>
+
+                <div class="text-left">
+                    <label class="block text-sm font-semibold mb-2 text-slate-700 dark:text-slate-300">Confirm Password</label>
+                    <div class="relative">
+                        <span class="absolute left-5 top-1/2 -translate-y-1/2 text-2xl text-slate-500">🔒</span>
+                        <input type="password" placeholder="••••••••" required
+                               class="w-full pl-14 pr-5 py-4 bg-emerald-50 dark:bg-slate-800 rounded-2xl focus:outline-none focus:ring-4 focus:ring-emerald-300 dark:focus:ring-emerald-700">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="my-8 relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-slate-300 dark:border-slate-700"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-6 bg-[#f0faf4] dark:bg-slate-950 text-slate-500">Or continue with</span>
+                </div>
+            </div>
+
+            <button class="w-full flex items-center justify-center gap-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 py-4 rounded-2xl font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-6 h-6">
+                Google
+            </button>
+
+            <p class="mt-8 text-slate-600 dark:text-slate-400">
+                Already have an account? <a href="#" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">Log in</a>
             </p>
         </div>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="section-padding">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" alt="Sustainable future" class="rounded-3xl shadow-2xl">
-            </div>
-            <div>
-                <h2 class="text-3xl font-outfit font-bold mb-6 text-emerald-600 dark:text-emerald-400">Our Mission</h2>
-                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                    At GreenImpact, we believe that individual actions, when multiplied by millions, can create massive positive change for the planet.
-                </p>
-                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                    We empower everyday people with cutting-edge AI technology to accurately measure their carbon footprint, discover personalized ways to reduce it, and directly offset emissions through verified global projects.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section-padding bg-emerald-50/50 dark:bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="stat-number text-emerald-600 dark:text-emerald-400">50K+</p>
-                    <p class="text-slate-600 dark:text-slate-400">Active Users</p>
-                </div>
-                <div>
-                    <p class="stat-number text-emerald-600 dark:text-emerald-400">1.2M</p>
-                    <p class="text-slate-600 dark:text-slate-400">Tons CO₂ Tracked</p>
-                </div>
-                <div>
-                    <p class="stat-number text-emerald-600 dark:text-emerald-400">85K</p>
-                    <p class="text-slate-600 dark:text-slate-400">Tons Offset</p>
-                </div>
-                <div>
-                    <p class="stat-number text-emerald-600 dark:text-emerald-400">120+</p>
-                    <p class="text-slate-600 dark:text-slate-400">Countries</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values -->
-    <section class="section-padding">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-outfit font-bold mb-12 text-emerald-600 dark:text-emerald-400">Our Core Values</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg">
-                    <div class="text-5xl mb-4">🌍</div>
-                    <h3 class="text-xl font-bold mb-3">Transparency</h3>
-                    <p class="text-slate-600 dark:text-slate-400">We use verified science and open methodologies so you can trust every calculation.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg">
-                    <div class="text-5xl mb-4">💡</div>
-                    <h3 class="text-xl font-bold mb-3">Innovation</h3>
-                    <p class="text-slate-600 dark:text-slate-400">Harnessing AI to make complex climate science simple and actionable for everyone.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg">
-                    <div class="text-5xl mb-4">🤝</div>
-                    <h3 class="text-xl font-bold mb-3">Community</h3>
-                    <p class="text-slate-600 dark:text-slate-400">Building a global movement where collective small actions create massive impact.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section (photo left, description right, 2 inch x 2 inch image) -->
-    <section class="section-padding bg-emerald-50/50 dark:bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-outfit font-bold mb-12 text-emerald-600 dark:text-emerald-400">Meet Our Team</h2>
-            <div class="flex flex-col md:flex-row items-center gap-12 max-w-4xl mx-auto">
-                <!-- Image on the left (fixed 2 inch x 2 inch) -->
-                <div class="flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Sara Sinha" class="profile-img rounded-full shadow-xl">
-                </div>
-
-                <!-- Description on the right -->
-                <div class="text-left flex-1">
-                    <h3 class="text-3xl font-bold mb-2">Sara Sinha</h3>
-                    <p class="text-emerald-600 dark:text-emerald-400 text-xl mb-6">Head of Sustainability</p>
-                    <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                        I am a Computer Science student at IIT Patna with a keen interest in technology, data, and problem-solving. I enjoy exploring new concepts through hands-on projects, hackathons, and competitions. My academic journey has strengthened my analytical thinking and technical skills. I am passionate about continuous learning and applying knowledge to real-world challenges. I actively seek opportunities that help me grow both professionally and personally.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Simple Copyright Footer -->
     <footer class="bg-slate-900 dark:bg-slate-950 text-slate-400 py-8">

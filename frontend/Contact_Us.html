@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenImpact | Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.7); }
+        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+        .gradient-text { background: linear-gradient(135deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        [v-cloak] { display: none; }
+
+        .accordion-item {
+            transition: all 0.3s ease;
+        }
+        .accordion-header {
+            cursor: pointer;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-content.is-open {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+        .accordion-item.is-open .plus-icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <!-- Logo added here -->
+                    <div class="bg-emerald-500 p-1.5 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.52 12 12 13 8"/>
+                        </svg>
+                    </div>
+                    <span class="font-outfit text-xl font-bold tracking-tight text-blue-600 dark:text-emerald-400">GreenImpact</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="frontend/index.html" class="hover:text-emerald-500 transition-colors">Home</a>
+                    <a href="frontend/features.html" class="hover:text-emerald-500 transition-colors">Features</a>
+                    <a href="frontend/how-it-works.html" class="hover:text-emerald-500 transition-colors">How it Works</a>
+                    <a href="frontend/about.html" class="hover:text-emerald-500 transition-colors">About</a>
+                    <a href="frontend/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <svg id="sun-icon" class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2"/>
+                            <path d="M12 20v2"/>
+                            <path d="m4.93 4.93 1.41 1.41"/>
+                            <path d="m17.66 17.66 1.41 1.41"/>
+                            <path d="M2 12h2"/>
+                            <path d="M20 12h2"/>
+                            <path d="m6.34 17.66-1.41 1.41"/>
+                            <path d="m19.07 4.93-1.41 1.41"/>
+                        </svg>
+                        <svg id="moon-icon" class="block dark:hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                        </svg>
+                    </button>
+                    <a href="frontend/login.html" class="hidden sm:block text-sm font-semibold hover:text-emerald-500 transition-colors">Log in</a>
+                    <a href="frontend/Sign_up.html" class="bg-emerald-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/20">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="pt-32 pb-20 max-w-4xl mx-auto px-4">
+        <h1 class="text-5xl font-outfit font-extrabold mb-6 text-center text-emerald-600 dark:text-emerald-400">Contact Us</h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-12 text-center">We're here to help! Reach out with any questions about tracking your environmental impact or making sustainable choices.</p>
+
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800">
+            <form class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700" required>
+                </div>
+                <div>
+                    <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                    <input type="text" id="subject" placeholder="What’s this about?" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" placeholder="Tell us more..." class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700 min-h-[150px] resize-vertical" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/20">Send Message</button>
+            </form>
+        </div>
+
+        <div class="mt-20">
+            <h2 class="text-4xl font-outfit font-bold mb-8 text-center text-emerald-600 dark:text-emerald-400">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="accordion-item bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden" onclick="toggleAccordion(this)">
+                    <div class="accordion-header flex justify-between items-center p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="font-semibold">How does GreenImpact calculate my environmental impact?</span>
+                        <span class="plus-icon text-emerald-500 text-xl transition-transform">+</span>
+                    </div>
+                    <div class="accordion-content text-slate-600 dark:text-slate-300">
+                        GreenImpact uses data from your daily activities, such as transportation, energy usage, and waste, combined with standard emission factors from reliable sources like the EPA to estimate your carbon footprint.
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden" onclick="toggleAccordion(this)">
+                    <div class="accordion-header flex justify-between items-center p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="font-semibold">Is my data secure?</span>
+                        <span class="plus-icon text-emerald-500 text-xl transition-transform">+</span>
+                    </div>
+                    <div class="accordion-content text-slate-600 dark:text-slate-300">
+                        Yes, we prioritize your privacy. All data is encrypted and stored securely, and we never share your personal information without consent. Check our Privacy Policy for details.
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden" onclick="toggleAccordion(this)">
+                    <div class="accordion-header flex justify-between items-center p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="font-semibold">How can I reset my password?</span>
+                        <span class="plus-icon text-emerald-500 text-xl transition-transform">+</span>
+                    </div>
+                    <div class="accordion-content text-slate-600 dark:text-slate-300">
+                        Click "Forgot password?" on the login page, enter your email, and follow the instructions in the reset email we send you.
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden" onclick="toggleAccordion(this)">
+                    <div class="accordion-header flex justify-between items-center p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="font-semibold">What subscription plans are available?</span>
+                        <span class="plus-icon text-emerald-500 text-xl transition-transform">+</span>
+                    </div>
+                    <div class="accordion-content text-slate-600 dark:text-slate-300">
+                        We offer free basic tracking and premium plans with advanced analytics, personalized tips, and community features. Visit our pricing page for more info.
+                    </div>
+                </div>
+
+                <div class="accordion-item bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden" onclick="toggleAccordion(this)">
+                    <div class="accordion-header flex justify-between items-center p-6 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        <span class="font-semibold">How do I delete my account?</span>
+                        <span class="plus-icon text-emerald-500 text-xl transition-transform">+</span>
+                    </div>
+                    <div class="accordion-content text-slate-600 dark:text-slate-300">
+                        Log in, go to account settings, and select "Delete Account." Note that this action is permanent and all your data will be erased.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm mb-2">© 2025 GreenImpact. All rights reserved.</p>
+            <p class="text-sm">Built with passion by the GreenImpact Team</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="login-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('login-modal')"></div>
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl animate-in fade-in zoom-in duration-300">
+            <h2 class="text-3xl font-outfit font-bold mb-2">Welcome Back</h2>
+            <p class="text-slate-500 mb-8">Login to continue your green journey.</p>
+            <div class="space-y-4">
+                <input type="email" value="alex@example.com" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="password" value="password" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                <button onclick="simulateAuth()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold shadow-lg shadow-emerald-500/20">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('signup-modal')"></div>
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl animate-in fade-in zoom-in duration-300">
+            <h2 class="text-3xl font-outfit font-bold mb-2">Join GreenImpact</h2>
+            <p class="text-slate-500 mb-8">Start tracking and offsetting today.</p>
+            <div class="space-y-4">
+                <input type="text" placeholder="Full Name" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="email" placeholder="Email Address" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="password" placeholder="Password" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                <button onclick="simulateAuth()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold shadow-lg shadow-emerald-500/20">Create Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
