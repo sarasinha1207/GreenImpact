@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenImpact | How It Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.7); }
+        .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+        .gradient-text { background: linear-gradient(135deg, #10b981, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .step-card {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .step-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.2);
+        }
+        .step-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.25);
+            border: 3px solid #10b981;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: linear-gradient(to right, #10b981, #3b82f6);
+            transition: width 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Navigation Header -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-emerald-500 p-1.5 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.52 12 12 13 8"/></svg>
+                    </div>
+                    <span class="font-outfit text-xl font-bold tracking-tight text-blue-600 dark:text-emerald-400">GreenImpact</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="index.html" class="hover:text-emerald-500 transition-colors">Home</a>
+                    <a href="Features.html" class="hover:text-emerald-500 transition-colors">Features</a>
+                    <a href="How_it_works.html" class="hover:text-emerald-500 transition-colors">How it Works</a>
+                    <a href="About.html" class="hover:text-emerald-500 transition-colors">About</a>
+                    <a href="Contact_Us.html" class="hover:text-emerald-500 transition-colors">Contact Us</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <svg id="sun-icon" class="hidden dark:block w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                        <svg id="moon-icon" class="block dark:hidden w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </button>
+                    <a href="login.html" class="hidden sm:block text-sm font-semibold hover:text-emerald-500 transition-colors">Log in</a>
+                    <a href="Sign_up.html" class="bg-emerald-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/20">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="fixed top-16 left-0 w-full h-1.5 bg-slate-200 dark:bg-slate-800 z-40">
+        <div id="progress-bar" class="progress-bar w-0"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 text-center bg-gradient-to-b from-emerald-50/50 to-transparent dark:from-slate-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-outfit font-extrabold mb-4 leading-tight">
+                How <span class="gradient-text">GreenImpact Works</span>
+            </h1>
+            <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed opacity-90">
+                A simple yet powerful AI-driven journey to measure, understand, and reduce your environmental impact.
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Step-by-Step Process -->
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4">
+            <div id="steps-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Steps will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Explanation -->
+    <section class="section-padding bg-emerald-50/50 dark:bg-slate-900">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-outfit font-bold text-center mb-10 text-emerald-600 dark:text-emerald-400">
+                The Science Behind the Magic
+            </h2>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="animate-fade-in-up">
+                    <h3 class="text-xl font-bold mb-4">Precise Carbon Calculations</h3>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        We use trusted global emission factors (EPA, IPCC, DEFRA) to accurately convert your daily activities into CO₂e.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-500 text-lg">✓</span>
+                            <span>Transport: Distance × Vehicle Efficiency</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-500 text-lg">✓</span>
+                            <span>Energy: kWh × Local Grid Intensity</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-500 text-lg">✓</span>
+                            <span>Food: Meal Type × Dietary Factors</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-lg animate-fade-in-up">
+                    <h4 class="font-bold mb-3">Real Example</h4>
+                    <p class="mb-3">20km drive in a standard car ≈</p>
+                    <p class="text-4xl font-bold text-emerald-600 mb-2">4.6 kg CO₂e</p>
+                    <p class="text-sm text-slate-500">Same as streaming HD video for 50 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Section -->
+    <section class="section-padding">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-outfit font-bold mb-6 text-emerald-600 dark:text-emerald-400">
+                AI-Powered Personalization
+            </h2>
+            <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-10">
+                After just a few logs, our AI creates a custom plan just for you.
+            </p>
+            <div class="bg-gradient-to-r from-emerald-500 to-blue-500 rounded-3xl p-10 text-white">
+                <h3 class="text-2xl font-bold mb-6">Your Plan Could Suggest:</h3>
+                <div class="grid md:grid-cols-3 gap-6 text-left">
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                        <h4 class="font-bold mb-2">🌿 Food</h4>
+                        <p>"Try one plant-based day per week"</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                        <h4 class="font-bold mb-2">🚲 Mobility</h4>
+                        <p>"Cycle short trips under 5km"</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-6">
+                        <h4 class="font-bold mb-2">💡 Home</h4>
+                        <p>"Switch to LED bulbs where possible"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm mb-2">© 2025 GreenImpact. All rights reserved.</p>
+            <p class="text-sm">Built with passion by the GreenImpact Team</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="login-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('login-modal')"></div>
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl">
+            <h2 class="text-2xl font-outfit font-bold mb-2">Welcome Back</h2>
+            <p class="text-slate-500 mb-6">Login to continue your green journey.</p>
+            <div class="space-y-4">
+                <input type="email" placeholder="Email" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="password" placeholder="Password" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-700">
+                <button class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('signup-modal')"></div>
+        <div class="relative bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl">
+            <h2 class="text-2xl font-outfit font-bold mb-2">Join GreenImpact</h2>
+            <p class="text-slate-500 mb-6">Start tracking and offsetting today.</p>
+            <div class="space-y-4">
+                <input type="text" placeholder="Full Name" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="email" placeholder="Email Address" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-700">
+                <input type="password" placeholder="Password" class="w-full bg-slate-50 dark:bg-slate-800 border-none p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-700">
+                <button class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold">Create Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
