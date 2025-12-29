@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenImpact | AI Insights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+        }
+        .sidebar {
+            background: #1e293b;
+        }
+        .card {
+            background: #1e293b;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+        .insight-card {
+            background: #334155;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .insight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+        }
+        .active-link {
+            background: #059669;
+            color: white;
+        }
+        .ai-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Bar with Logout Button -->
+    <header class="bg-[#1e293b] border-b border-gray-700 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-emerald-500 p-2 rounded-lg">
+                <span class="text-2xl">🌿</span>
+            </div>
+            <h1 class="text-2xl font-bold">GreenImpact</h1>
+        </div>
+        <button onclick="if(confirm('Are you sure you want to go to Mainpage?')) window.location.href='../index.html'" 
+                class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition">
+            Back to Home
+        </button>
+    </header>
+
+    <!-- Main Layout (Sidebar + Content) -->
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 flex flex-col p-8 space-y-8">
+            <nav class="space-y-4">
+                <a href="Dashboard.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400">
+                    <span>🏠</span> Dashboard
+                </a>
+                <a href="Log-Activity.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400">
+                    <span>📝</span> Log Activity
+                </a>
+                <a href="AI-insight.html" class="flex items-center gap-4 py-3 px-4 rounded-lg active-link">
+                    <span>🤖</span> AI Insights
+                </a>
+                <a href="Challenges.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400">
+                    <span>🏆</span> Challenges
+                </a>
+                <a href="Community.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400">
+                    <span>👥</span> Community
+                </a>
+                <a href="Profile.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400">
+                    <span>👤</span> My Profile
+                </a>
+            </nav>
+
+            <div class="mt-auto text-center">
+                <p class="text-sm text-gray-400">Eco Score</p>
+                <p class="text-3xl font-bold">850 Pts</p>
+                <div class="w-12 h-12 bg-emerald-600 rounded-full mx-auto mt-2 flex items-center justify-center text-xl">
+                    SS
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-12">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">AI-Powered Insights</h1>
+                    <p class="text-gray-400">Personalized recommendations based on your recent activities</p>
+                </div>
+                <span class="ai-badge">Powered by Gemini AI</span>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="card p-8 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <p class="text-5xl font-bold text-emerald-400 mb-2">8.2 kg</p>
+                        <p class="text-gray-300">Average Daily CO₂e This Week</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-bold text-emerald-400 mb-2">-18%</p>
+                        <p class="text-gray-300">Reduction vs Last Week</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-bold text-emerald-400 mb-2">Top Area</p>
+                        <p class="text-gray-300">Transport (52% of emissions)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalized Tips Grid -->
+            <h2 class="text-2xl font-bold mb-6">Your Tailored Recommendations</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">🚲</div>
+                    <h3 class="text-xl font-bold mb-3">Switch Short Trips to Cycling</h3>
+                    <p class="text-gray-300 mb-4">
+                        Your 10–15 km daily car commutes contribute the most emissions. Replacing just 2 trips per week with cycling or walking can reduce your transport footprint by ~25%.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-emerald-400">Potential Saving</span>
+                        <span class="font-bold">2.1 kg CO₂/week</span>
+                    </div>
+                </div>
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">🥗</div>
+                    <h3 class="text-xl font-bold mb-3">Try Meatless Mondays</h3>
+                    <p class="text-gray-300 mb-4">
+                        Non-veg meals appear frequently in your logs. Going plant-based one day a week could cut your food-related emissions by up to 20% that's huge for both health and planet!
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-emerald-400">Potential Saving</span>
+                        <span class="font-bold">1.4 kg CO₂/week</span>
+                    </div>
+                </div>
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">💡</div>
+                    <h3 class="text-xl font-bold mb-3">Optimize Home Energy Use</h3>
+                    <p class="text-gray-300 mb-4">
+                        AC and fan usage spikes in evenings. Setting AC to 24–26°C and using fans together can lower electricity emissions by 15–20% without sacrificing comfort.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-emerald-400">Potential Saving</span>
+                        <span class="font-bold">1.0 kg CO₂/week</span>
+                    </div>
+                </div>
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">🚌</div>
+                    <h3 class="text-xl font-bold mb-3">Use Public Transport More</h3>
+                    <p class="text-gray-300 mb-4">
+                        Metro or bus emits far less per passenger than personal vehicles. Switching 3 days a week could reduce your weekly transport emissions by over 40%.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-emerald-400">Potential Saving</span>
+                        <span class="font-bold">3.5 kg CO₂/week</span>
+                    </div>
+                </div>
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">♻️</div>
+                    <h3 class="text-xl font-bold mb-3">Cut Single-Use Plastics</h3>
+                    <p class="text-gray-300 mb-4">
+                        Your waste logs show frequent plastic packaging. Carrying a reusable bottle and bag can eliminate 50+ single-use items monthly and reduce indirect emissions.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-emerald-400">Indirect Impact</span>
+                        <span class="font-bold">Better Waste Score</span>
+                    </div>
+                </div>
+
+                <div class="insight-card p-8">
+                    <div class="text-5xl mb-6 text-center">🌳</div>
+                    <h3 class="text-xl font-bold mb-3">Offset What Remains</h3>
+                    <p class="text-gray-300 mb-4">
+                        After reductions, offset your weekly footprint (~8 kg) for just ₹80–100 via verified Indian reforestation or renewable energy projects.
+                    </p>
+                    <div class="text-center mt-4">
+                        <button class="bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-700 transition">
+                            Offset Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-gradient-to-r from-emerald-600 to-emerald-500 text-white px-10 py-4 rounded-full text-lg font-bold shadow-lg hover:shadow-xl transition-all">
+                    Generate New Insights
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Small Footer at Bottom -->
+    <footer class="bg-[#0B111F] text-slate-300 py-6 w-full mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+        © 2025 GreenImpact. All rights reserved.<br>
+        Built with passion by the GreenImpact Team
+    </div>
+    </footer>
+
+</body>
+</html>

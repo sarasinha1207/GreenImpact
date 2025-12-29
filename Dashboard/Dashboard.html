@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenImpact | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { emerald: { 500: '#10b981', 600: '#059669', 700: '#047857' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #0f172a; color: white; }
+        .sidebar { background: #1e293b; }
+        .card { background: #1e293b; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+        .tip-card { background: #334155; border-radius: 1rem; transition: transform 0.3s; }
+        .tip-card:hover { transform: translateY(-4px); }
+        .active-link { background: #059669; color: white; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Bar with Logout Button -->
+    <header class="bg-[#1e293b] border-b border-gray-700 px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="bg-emerald-500 p-2 rounded-lg"><span class="text-2xl">🌿</span></div>
+            <h1 class="text-2xl font-bold">GreenImpact</h1>
+        </div>
+        <button onclick="if(confirm('Are you sure you want to go to Mainpage?')) window.location.href='../index.html'" 
+                class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition">
+            Back to Home
+        </button>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 flex flex-col p-8 space-y-8">
+            <nav class="space-y-4">
+                <a href="Dashboard.html" class="flex items-center gap-4 py-3 px-4 rounded-lg active-link"><span>🏠</span> Dashboard</a>
+                <a href="Log-Activity.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400"><span>📝</span> Log Activity</a>
+                <a href="AI-insight.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400"><span>🤖</span> AI Insights</a>
+                <a href="Challenges.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400"><span>🏆</span> Challenges</a>
+                <a href="Community.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400"><span>👥</span> Community</a>
+                <a href="Profile.html" class="flex items-center gap-4 py-3 px-4 rounded-lg text-gray-400"><span>👤</span> My Profile</a>
+            </nav>
+            <div class="mt-auto text-center">
+                <p class="text-sm text-gray-400">Eco Score</p>
+                <p class="text-3xl font-bold">850 Pts</p>
+                <div class="w-12 h-12 bg-emerald-600 rounded-full mx-auto mt-2 flex items-center justify-center text-xl">SS</div>
+            </div>
+        </aside>
+
+        <!-- Main Content (Centered Containers) -->
+        <main class="flex-1 flex flex-col items-center p-12">
+            <div class="max-w-6xl w-full">
+                <div class="flex justify-between items-center mb-8 w-full">
+                    <div>
+                        <h1 class="text-4xl font-bold mb-2">Your Dashboard</h1>
+                        <p class="text-gray-400">Track your impact, get smart insights, and make greener choices every day.</p>
+                    </div>
+                    <button onclick="window.location.href='../leaderboard.html'" 
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold transition">
+                        View Leaderboard
+                    </button>
+                </div>
+
+                <!-- Carbon Footprint Overview -->
+                <div class="card p-8 mb-12 w-full">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Today's Carbon Footprint</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                        <div class="text-center"><p class="text-4xl font-bold text-emerald-400">8.2</p><p class="text-gray-400">kg CO₂e</p></div>
+                        <div class="text-center"><p class="text-2xl font-semibold">Transport</p><p class="text-gray-400">4.1 kg</p></div>
+                        <div class="text-center"><p class="text-2xl font-semibold">Food</p><p class="text-gray-400">2.3 kg</p></div>
+                        <div class="text-center"><p class="text-2xl font-semibold">Energy</p><p class="text-gray-400">1.8 kg</p></div>
+                    </div>
+                    <div class="max-w-[280px] mx-auto"><canvas id="daily-chart" height="70"></canvas></div>
+                </div>
+
+                <!-- Weekly Emissions Trend (50% smaller) -->
+                <div class="card p-8 mb-12 w-full">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Weekly Emissions Trend</h2>
+                    <div class="max-w-md mx-auto"><canvas id="weekly-chart" height="100"></canvas></div>
+                </div>
+
+                <!-- Monthly Tracker -->
+                <div class="card p-8 mb-12 w-full max-w-4xl">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Monthly CO₂ Reduction Tracker</h2>
+                    <p class="text-gray-400 mb-4 text-center">Goal: Reduce 50 kg CO₂ this month</p>
+                    <div class="bg-[#334155] h-10 rounded-full overflow-hidden mb-2">
+                        <div class="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 w-3/5"></div>
+                    </div>
+                    <div class="flex justify-between text-sm"><span>Progress: 30 kg reduced</span><span>60%</span></div>
+                </div>
+
+                <!-- AI Insights -->
+                <div class="card p-8 w-full">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">AI-Powered Sustainability Insights</h2>
+                        <button id="refresh-tips" class="bg-[#3b82f6] hover:bg-[#2563eb] text-white px-6 py-3 rounded-full font-medium transition">
+                            Refresh Tips
+                        </button>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">🚲</div><h3 class="font-bold mb-2">Switch to Cycling</h3><p class="text-gray-300 text-sm">Replace 2 short car trips per week with cycling to save ~1.5 kg CO₂ weekly.</p></div>
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">🥗</div><h3 class="font-bold mb-2">One Plant-Based Day</h3><p class="text-gray-300 text-sm">Go vegetarian one day a week..it reduces food emissions by up to 20%.</p></div>
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">💡</div><h3 class="font-bold mb-2">Unplug Devices</h3><p class="text-gray-300 text-sm">Turn off standby mode on electronics to cut energy waste by 10–15%.</p></div>
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">🚌</div><h3 class="font-bold mb-2">Use Public Transport</h3><p class="text-gray-300 text-sm">Metro or bus for daily commute can reduce transport emissions by 60%.</p></div>
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">♻️</div><h3 class="font-bold mb-2">Reduce Plastic Use</h3><p class="text-gray-300 text-sm">Carry a reusable bag and bottle.. it avoid 50+ single-use plastics monthly.</p></div>
+                        <div class="tip-card p-6"><div class="text-4xl mb-4">🌳</div><h3 class="font-bold mb-2">Offset Remaining</h3><p class="text-gray-300 text-sm">Offset your weekly footprint for just ₹100 via verified tree-planting projects.</p></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0A0F1B] text-slate-300 py-6 w-full mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            © 2025 GreenImpact. All rights reserved.<br>
+            Built with passion by the GreenImpact Team
+        </div>
+    </footer>
+
+    <script>
+        // Daily chart
+        const ctxDaily = document.getElementById('daily-chart').getContext('2d');
+        new Chart(ctxDaily, {
+            type: 'doughnut',
+            data: { labels: ['Transport', 'Food', 'Energy', 'Waste'], datasets: [{ data: [41,23,18,18], backgroundColor: ['#f59e0b','#10b981','#3b82f6','#8b5cf6'], borderWidth: 0 }] },
+            options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1' } } } }
+        });
+
+        // Weekly line chart (50% size)
+        const ctxWeekly = document.getElementById('weekly-chart').getContext('2d');
+        new Chart(ctxWeekly, {
+            type: 'line',
+            data: {
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                datasets: [{
+                    label: 'CO₂ Emissions (kg)',
+                    data: [8.2,7.5,9.1,6.8,8.0,5.9,7.2],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16,185,129,0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, grid: { color: '#334155' } }, x: { grid: { color: '#334155' } } },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        document.getElementById('refresh-tips').addEventListener('click', () => alert('Fetching latest personalized tips from AI...'));
+    </script>
+</body>
+</html>
