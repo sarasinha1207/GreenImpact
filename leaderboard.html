@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenImpact | Leaderboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+        .dark .glass { background: rgba(15, 23, 42, 0.7); }
+        .gradient-text { background: linear-gradient(135deg, #10b981, #3b82f6);-webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        table th { cursor: pointer; }
+        table th.sort-asc::after { content: ' ↑'; }
+        table th.sort-desc::after { content: ' ↓'; }
+        .tip-card { background: #1e293b; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.3s; }
+        .tip-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Navigation Header -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-emerald-500 p-1.5 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.52 12 12 13 8"/>
+                        </svg>
+                    </div>
+                    <span class="font-outfit text-xl font-bold tracking-tight text-blue-600 dark:text-emerald-400">GreenImpact</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <a href="index.html" class="hover:text-emerald-500 transition-colors">Home</a>
+                    <a href="Features.html" class="hover:text-emerald-500 transition-colors">Features</a>
+                    <a href="How_it_works.html" class="hover:text-emerald-500 transition-colors">How it Works</a>
+                    <a href="About.html" class="hover:text-emerald-500 transition-colors">About</a>
+                    <a href="Contact.html" class="hover:text-emerald-500 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <svg id="sun-icon" class="hidden dark:block w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+                        </svg>
+                        <svg id="moon-icon" class="block dark:hidden w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                        </svg>
+                    </button>
+                    <button class="text-sm font-semibold text-slate-400 cursor-not-allowed">
+                        Log in (Demo)
+                    </button>
+
+                    <button class="bg-emerald-600/60 text-white px-5 py-2.5 rounded-full text-sm font-bold cursor-not-allowed">
+                        Sign up (Demo)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Leaderboard Hero -->
+    <section class="pt-32 pb-16 text-center bg-gradient-to-b from-emerald-50/50 to-transparent dark:from-slate-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-outfit font-extrabold mb-4 leading-tight">
+                <span class="gradient-text">Leaderboard</span>
+            </h1>
+            <p class="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed opacity-90">
+                See who’s making the biggest impact this month! Earn points by completing challenges and sustainable actions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tabs for Monthly & All-Time -->
+    <section class="pb-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-center gap-8 mb-8 border-b border-slate-200 dark:border-slate-800">
+                <button id="monthly-tab" class="tab-btn active px-6 py-3 font-semibold border-b-2 border-emerald-500 text-emerald-500">This Month</button>
+                <button id="alltime-tab" class="tab-btn px-6 py-3 font-semibold">All Time</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-6 max-w-md mx-auto">
+                <input type="text" id="search-input" placeholder="Search users..." class="w-full p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 dark:text-white">
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-lg overflow-hidden">
+                <table class="w-full table-auto">
+                    <thead class="bg-emerald-50 dark:bg-emerald-900/30">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold cursor-pointer" onclick="sortTable(0)">Rank <span class="sort-icon"></span></th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold cursor-pointer" onclick="sortTable(1)">User <span class="sort-icon"></span></th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold cursor-pointer" onclick="sortTable(2)">This Month Points <span class="sort-icon"></span></th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold cursor-pointer" onclick="sortTable(3)">Overall Points <span class="sort-icon"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body" class="divide-y divide-slate-200 dark:divide-slate-700">
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-center mt-8 text-sm text-slate-500 dark:text-slate-400">
+                Keep logging activities and completing challenges to climb the ranks! 🌿
+            </p>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="pb-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-outfit font-bold mb-8 text-center text-emerald-600 dark:text-emerald-400">Tips to Reduce Waste Using Gemini AI</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Track Waste Patterns</h3>
+                    <p class="text-slate-600 dark:text-slate-300">Use AI to log daily waste and identify hotspots like plastic packaging. Gemini analyzes trends and suggests reductions, e.g., reusable alternatives.</p>
+                </div>
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Personalized Zero-Waste Plans</h3>
+                    <p class="text-slate-600 dark:text-slate-300">Gemini creates custom plans based on your habits, like switching to bulk buying or composting tips to minimize food waste.</p>
+                </div>
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Smart Shopping Suggestions</h3>
+                    <p class="text-slate-600 dark:text-slate-300">AI recommends low-waste products and reminds you to use reusable bags, reducing single-use plastics by up to 50 items monthly.</p>
+                </div>
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Waste Sorting Guidance</h3>
+                    <p class="text-slate-600 dark:text-slate-300">Gemini provides real-time advice on recycling vs. composting, helping divert 20-30% more waste from landfills.</p>
+                </div>
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Upcycling Ideas</h3>
+                    <p class="text-slate-600 dark:text-slate-300">Get creative AI-generated upcycling projects for common waste items, turning jars into planters or bottles into decor.</p>
+                </div>
+                <div class="tip-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Energy-Efficient Waste Management</h3>
+                    <p class="text-slate-600 dark:text-slate-300">AI optimizes home waste systems, like smart reminders to reduce energy from unnecessary appliance use in waste processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0B111F] dark:bg-[#0B111F] text-slate-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">© 2025 GreenImpact. All rights reserved.<br>Built with passion by the GreenImpact Team</p>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleModal(modalId) {
+            document.getElementById(modalId).classList.toggle('hidden');
+        }
+
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Leaderboard data
+        const monthlyData = [
+            { rank: 1, name: "Tanvi Chaudhary", monthly: 2450, overall: 12800 },
+            { rank: 2, name: "Annirudh Singh", monthly: 2320, overall: 11500 },
+            { rank: 3, name: "You", monthly: 2100, overall: 9800 },
+            { rank: 4, name: "Riya Rajput", monthly: 1980, overall: 9200 },
+            { rank: 5, name: "Deepshika Verma", monthly: 1850, overall: 8700 },
+            { rank: 6, name: "Nimit Gupta", monthly: 1700, overall: 8100 },
+            { rank: 7, name: "Lavanya Roy", monthly: 7500, overall: 7500 },
+            { rank: 8, name: "Yashika Sharma", monthly: 6800, overall: 6800 }
+        ];
+
+        const allTimeData = [
+            { rank: 1, name: "Priya Sharma", monthly: 12800, overall: 12800 },
+            { rank: 2, name: "Aman Kumar", monthly: 11500, overall: 11500 },
+            { rank: 3, name: "Riya Singh", monthly: 9200, overall: 9200 },
+            { rank: 4, name: "You", monthly: 9800, overall: 9800 },
+            { rank: 5, name: "Rahul Verma", monthly: 8700, overall: 8700 },
+            { rank: 6, name: "Neha Gupta", monthly: 8100, overall: 8100 },
+            { rank: 7, name: "Mandeep Singh", monthly: 7500, overall: 7500 },
+            { rank: 8, name: "Yatharth", monthly: 6800, overall: 6800 }
+        ];
+
+        let currentData = monthlyData;
+
+        function renderLeaderboard(data) {
+            const tbody = document.getElementById('leaderboard-body');
+            tbody.innerHTML = '';
+            data.forEach(user => {
+                const rowClass = user.name === "You" ? 'bg-emerald-100 dark:bg-emerald-900/30 font-bold' : '';
+                const row = document.createElement('tr');
+                row.className = `hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors ${rowClass}`;
+                row.innerHTML = `
+                    <td class="px-6 py-5 text-lg font-bold ${user.rank <= 3 ? 'text-emerald-600 dark:text-emerald-400' : ''}">#${user.rank}</td>
+                    <td class="px-6 py-5 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-emerald-200 dark:bg-emerald-800 rounded-full flex items-center justify-center text-lg font-bold">${user.name.charAt(0)}</div>
+                        <span class="font-medium">${user.name}</span>
+                    </td>
+                    <td class="px-6 py-5 text-center font-semibold">${user.monthly.toLocaleString()}</td>
+                    <td class="px-6 py-5 text-center font-semibold">${user.overall.toLocaleString()}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Tab switching
+        document.getElementById('monthly-tab').addEventListener('click', () => {
+            document.getElementById('monthly-tab').classList.add('active', 'border-emerald-500', 'text-emerald-500');
+            document.getElementById('alltime-tab').classList.remove('active', 'border-emerald-500', 'text-emerald-500');
+            currentData = monthlyData;
+            renderLeaderboard(sortData(currentData, sortColumn, sortDirection));
+        });
+
+        document.getElementById('alltime-tab').addEventListener('click', () => {
+            document.getElementById('alltime-tab').classList.add('active', 'border-emerald-500', 'text-emerald-500');
+            document.getElementById('monthly-tab').classList.remove('active', 'border-emerald-500', 'text-emerald-500');
+            currentData = allTimeData;
+            renderLeaderboard(sortData(currentData, sortColumn, sortDirection));
+        });
+
+        // Search functionality
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = currentData.filter(user => user.name.toLowerCase().includes(searchTerm));
+            renderLeaderboard(filteredData);
+        });
+
+        // Sorting functionality
+        let sortColumn = 0; // Default sort by rank
+        let sortDirection = 'asc'; // Default ascending
+
+        function sortData(data, column, direction) {
+            return data.slice().sort((a, b) => {
+                let valA, valB;
+                if (column === 0) { valA = a.rank; valB = b.rank; }
+                else if (column === 1) { valA = a.name.toLowerCase(); valB = b.name.toLowerCase(); }
+                else if (column === 2) { valA = a.monthly; valB = b.monthly; }
+                else { valA = a.overall; valB = b.overall; }
+
+                if (valA < valB) return direction === 'asc' ? -1 : 1;
+                if (valA > valB) return direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+        function sortTable(column) {
+            if (sortColumn === column) {
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortColumn = column;
+                sortDirection = 'asc';
+            }
+
+            // Update sort icons
+            document.querySelectorAll('th .sort-icon').forEach(icon => icon.textContent = '');
+            const th = document.querySelectorAll('th')[column];
+            th.querySelector('.sort-icon').textContent = sortDirection === 'asc' ? ' ↑' : ' ↓';
+
+            renderLeaderboard(sortData(currentData, sortColumn, sortDirection));
+        }
+
+        // Initial load
+        renderLeaderboard(monthlyData);
+
+        // Add sort icons to headers
+        document.querySelectorAll('th').forEach(th => {
+            th.innerHTML += ' <span class="sort-icon"></span>';
+        });
+    </script>
+</body>
+</html>
