@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | GreenImpact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { emerald: { 500: '#10b981', 600: '#059669' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background: #0f172a; color: white; }
+        .card { background: #1e293b; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+        .highlight { background: #334155; border-left: 4px solid #10b981; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Bar -->
+    <header class="bg-[#1e293b] border-b border-gray-700 px-8 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <h1 class="text-2xl font-bold">GreenImpact</h1>
+        </div>
+        <a href="index.html" class="text-gray-400 hover:text-white transition flex items-center gap-2">
+            Back to Home
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="card p-10 md:p-16">
+                <h1 class="text-4xl font-bold text-center mb-4 text-emerald-400">Privacy Policy</h1>
+                <p class="text-center text-gray-400 mb-12">Last updated: December 30, 2025</p>
+
+                <div class="space-y-10 text-gray-300 leading-relaxed text-lg">
+
+                    <section class="highlight p-6">
+                        <p class="text-emerald-400 font-semibold text-xl mb-3">
+                            GreenImpact is a student demonstration project created for educational purposes.
+                        </p>
+                        <p>
+                            This website is hosted on <strong>GitHub Pages</strong> and has <strong>no backend server</strong>.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-emerald-400">Information Collection</h2>
+                        <p class="highlight p-6">
+                            We do <strong class="text-emerald-400">NOT</strong> collect, store, or transmit any personal information.
+                        </p>
+                        <p>All input fields on this website are for demonstration only and are processed <strong>locally in your browser</strong>. Nothing is saved or sent anywhere.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-emerald-400">Third-Party Services</h2>
+                        <p>This website does <strong>not</strong> use:</p>
+                        <ul class="list-disc list-inside space-y-2 mt-4 text-gray-300">
+                            <li>Analytics or tracking tools</li>
+                            <li>Advertising services</li>
+                            <li>Payment processors</li>
+                            <li>External data collection</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-emerald-400">Cookies & Tracking</h2>
+                        <p class="highlight p-6">
+                            This site does <strong>not</strong> use cookies or any tracking technologies.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-emerald-400">Children’s Information</h2>
+                        <p>This project is intended for educational demonstration only and does not target children or collect any user data.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold mb-4 text-emerald-400">Contact & Source Code</h2>
+                        <p>
+                            This is a non-commercial, educational project. The full source code is publicly available on GitHub.
+                        </p>
+                        <p class="mt-4">
+                            <strong>Note:</strong> This is <strong>not</strong> a production application or commercial service.
+                        </p>
+                    </section>
+
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="index.html" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-full text-lg font-bold transition shadow-lg">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0A0F1B] text-slate-300 py-6 w-full mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            © 2025 GreenImpact. All rights reserved.<br>
+            Built with passion by the GreenImpact Team
+        </div>
+    </footer>
+
+</body>
+</html>
